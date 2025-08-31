@@ -1,0 +1,15 @@
+func searchMatrix(matrix [][]int, target int) bool {
+    first := 0
+    last := len(matrix[0]) - 1
+    for first < len(matrix) && last >= 0 {
+        if matrix[first][last] == target{
+            return true
+        }else if matrix[first][last] > target{
+            last -=1
+        }else{
+            first +=1
+        }
+    }
+
+    return false
+}
