@@ -1,0 +1,17 @@
+func intToRoman(num int) string {
+    value := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
+    roman := []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+    res := ""
+
+    for num > 0 {
+        for i, val := range value {
+            if num >= val {
+                res = res + roman[i]
+                num = num - val
+                break
+            }
+        }
+    }
+
+    return res
+}
