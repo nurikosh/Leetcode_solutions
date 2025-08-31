@@ -1,0 +1,28 @@
+import "math"
+
+func reverse(x int) int {
+	s := Itoa(x)
+	res := 0
+	for _, ch := range s {
+		res = res*10 + int(ch-'0')
+	}
+
+    if res > math.MaxInt32{
+        return 0
+    }
+    if res < math.MinInt32{
+        return 0
+    }
+	return res
+}
+
+func Itoa(x int) string {
+	res := []rune{}
+
+	for x != 0 {
+		res = append(res, rune('0'+x%10))
+		x /= 10
+	}
+
+	return string(res)
+}
