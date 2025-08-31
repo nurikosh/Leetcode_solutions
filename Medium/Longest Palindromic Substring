@@ -1,0 +1,24 @@
+func longestPalindrome(s string) string {
+    for end := len(s); end > 0 ; end --{
+        for start := 0; start <= len(s) - end; start ++{
+            if check(s, start, start + end){
+                return s[start : start + end]
+            }
+        }
+    }
+    return ""
+}
+
+
+func check (s string, left, right int )bool{
+    right -=1
+    for left < right{
+        if s[left] != s[right]{
+            return false
+        }
+        left ++
+        right --
+    }
+    return true
+}
+
