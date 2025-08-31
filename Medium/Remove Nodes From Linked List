@@ -1,0 +1,41 @@
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func removeNodes(head *ListNode) *ListNode {
+    head = reverse(head)
+
+    var prev *ListNode = nil
+    curr := head
+    currMax := 0
+
+    for curr != nil{
+        if curr.Val < currMax{
+            if prev != nil{
+                prev.Next = curr.Next
+            }
+        }else{
+            prev = curr
+            currMax = curr.Val
+        }
+        curr = curr.Next
+    }
+    return reverse(head)
+}
+
+
+func reverse(head *ListNode) *ListNode{
+    var prev *ListNode = nil
+    curr := head
+
+    for curr != nil{
+        nextTemp := curr.Next
+        curr.Next = prev
+        prev = curr
+        curr = nextTemp
+    }
+    return prev
+}
